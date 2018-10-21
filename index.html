@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>City Planner</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -36,20 +36,13 @@
 
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav" style="margin-right: 500px">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-right: 15px">
                 <label id="drawPopulation" class="btn btn-primary active">
-                    <input type="radio" name="drawing" autocomplete="off"> Show Population
-                </label>
-                <label id="drawDensity" class="btn btn-primary active">
-                    <input type="radio" name="drawing" autocomplete="off"> Show Density
+                    <input type="checkbox" name="drawing" autocomplete="off"> Show Population
                 </label>
             </div>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
+            <button id="placeNew" type="button" class="btn btn-success" style="margin-right: 15px">Place New Optimized Element</button>
+            <button type="button" class="btn btn-warning" style="margin-right: 15px">Warning</button>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
@@ -60,6 +53,23 @@
         </div>
     </div>
 </nav>
+
+<div class="form-group" style="
+    width: 400px;
+    margin: 0;
+    position: absolute;
+    z-index: 100;
+    margin-top: 100px;
+">
+    <div class="custom-control custom-checkbox">
+        <input id="layer_hospital" type="checkbox" class="custom-control-input" checked="">
+        <label class="custom-control-label" for="layer_hospital">Hospitals</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input id="layer_library" type="checkbox" class="custom-control-input" unchecked="">
+        <label class="custom-control-label" for="layer_library">Libraries</label>
+    </div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

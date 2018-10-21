@@ -1,3 +1,5 @@
+var url_backend = "https://gr4jh5bt86.execute-api.us-west-2.amazonaws.com/dev";
+
 var Mapa = function () {
     this.initialize();
     this.highlighted = null;
@@ -49,9 +51,9 @@ Mapa.prototype.initialize = function () {
         var barris_geo = data;
 
 
-        $.getJSON("./hoods.json", function (data) {
+        $.getJSON(url_backend + "/load/8/2018", function (data) {
             var barris_heatmap_source = new ol.source.Vector();
-            
+
             for (var i = 0; i < data.features.length; ++i) {
                 var point = barris_geo.features.find(
                     feat => feat.properties["C_Barri"] === data.features[i].id);
@@ -99,18 +101,17 @@ Mapa.prototype.initialize = function () {
             );
 
             var hospitals_style = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/hc.png'}),
                 fill: new ol.style.Fill({
                     color: 'rgba(255, 0, 0, 0.4)'
                 }),
                 stroke: new ol.style.Stroke({
                     color: 'rgba(255, 0, 0, 1)',
                     width: 2
-                }),
-                image: new ol.style.Circle({
-                    radius: 7,
-                    fill: new ol.style.Fill({
-                        color: 'rgba(255, 0, 0, 0.4)'
-                    })
                 })
             });
             self.layers.HOSPITALS = new ol.layer.Vector(
@@ -149,12 +150,22 @@ Mapa.prototype.initialize = function () {
 
                 $("#evolution").change(function () {
                     $('#evolution_output').text(this.value);
+
+                    $.getJSON(url_backend + "/load/8/" + this.value, function (data) {
+                        for (var i = 0; i < data.features.length; ++i) {
+                            self.layers.BARRIS_HEATMAP.getSource().getFeatures().find(
+                                f => f.getProperties().name === data.features[i].id).set("population", data.features[i].population);
+                        }
+                    });
                 });
+
+                $("#placeNew").click(function (event) {
+                    self.placeNew(event);
+                })
             });
         });
     });
 };
-
 Mapa.prototype.highlightFeature = function (pixel) {
     var feature = this.map.forEachFeatureAtPixel(pixel, function (feat) {
         return feat;
@@ -169,10 +180,53 @@ Mapa.prototype.highlightFeature = function (pixel) {
 
         this.highlighted = feature;
     }
-}
+};
+
+Mapa.prototype.highlightLayer = function(data)
+{
+    var style = new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: 'rgba(0, 255, 0, 0.4)'
+        }),
+        stroke: this.layers.CIRCLES.getStyle()()[0].getStroke(),
+        text: this.layers.CIRCLES.getStyle()()[0].getText()
+    });
+
+    if (this.layers.BARRI_NEWELEMENT === undefined)
+    {
+        var layer = new ol.layer.Vector(
+            {
+                source: new ol.source.Vector(),
+                style: style
+            }
+        );
+
+        this.layers.BARRI_NEWELEMENT = layer;
+
+        this.map.addLayer(this.layers.BARRI_NEWELEMENT);
+    }
+    else {
+        if (this.layers.BARRI_NEWELEMENT.getSource().getFeatures().length > 0) {
+            for (var i = 0; i < this.layers.BARRI_NEWELEMENT.getSource().getFeatures().length; ++i) {
+                this.layers.BARRI_NEWELEMENT.getSource().removeFeature(
+                    this.layers.BARRI_NEWELEMENT.getSource().getFeatures()[i]);
+            }
+        }
+    }
+
+    var feat = new ol.Feature(
+        {
+            name: data.hood,
+            geometry: this.layers.BARRIS.getSource().getFeatures().find(f => f.getProperties().C_Barri === data.hood)
+                .getGeometry()
+        }
+    );
+
+    this.layers.BARRI_NEWELEMENT.getSource().addFeature(feat);
+};
 
 Mapa.prototype.drawPopulation = function (mouse_event) {
-    this.layers.BARRIS_HEATMAP.setVisible(true);
+    this.layers.BARRIS_HEATMAP.setVisible(!this.layers.BARRIS_HEATMAP.getVisible());
 };
 
 Mapa.prototype.drawPoint = function (point, pointType) {
@@ -199,6 +253,22 @@ Mapa.prototype.loadPointsFromJSON = function (pointsJSON, pointType) {
 
     for (var i = 0; i < points.length; ++i) {
         this.drawPoint(points[i], pointType);
+    }
+};
+
+Mapa.prototype.placeNew = function (event) {
+    var self = this;
+    if ($("#layer_hospital").prop("checked"))
+    {
+        $.get(url_backend + "/predict_hospital", function (data) {
+            self.highlightLayer(data);
+        });
+    }
+    else if ($("#layer_library").prop("checked"))
+    {
+        $.get(url_backend + "/predict_library", function (data) {
+            self.highlightLayer(data);
+        })
     }
 };
 
