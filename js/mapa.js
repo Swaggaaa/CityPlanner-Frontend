@@ -3,6 +3,18 @@ var url_backend = "https://gr4jh5bt86.execute-api.us-west-2.amazonaws.com/dev";
 var Mapa = function () {
     this.initialize();
     this.highlighted = null;
+    this.mapping = {
+        "POBLACIO": "0",
+        "HOSPITAL": "01",
+        "ESCOLES": "02",
+        "JUSTICIA": "03",
+        "FARMACIES": "04",
+        "CULTURA": "05",
+        "SOCIAL": "06",
+        "SPORTS": "07",
+        "BIBLIO": "08",
+        "UNIVERSITAT":"09"
+    };
 }
 
 Mapa.prototype.initialize = function () {
@@ -51,7 +63,7 @@ Mapa.prototype.initialize = function () {
         var barris_geo = data;
 
 
-        $.getJSON(url_backend + "/load/8/2018", function (data) {
+        $.getJSON(url_backend + "/poblacio/2018", function (data) {
             var barris_heatmap_source = new ol.source.Vector();
 
             for (var i = 0; i < data.features.length; ++i) {
@@ -105,7 +117,8 @@ Mapa.prototype.initialize = function () {
                     anchor: [0.5, 46],
                     anchorXUnits: 'fraction',
                     anchorYUnits: 'pixels',
-                    src: 'img/hc.png'}),
+                    src: 'img/hc.png'
+                }),
                 fill: new ol.style.Fill({
                     color: 'rgba(255, 0, 0, 0.4)'
                 }),
@@ -120,11 +133,161 @@ Mapa.prototype.initialize = function () {
                     style: hospitals_style
                 }
             );
+            var cultural_style = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/cultural.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.CULTURAL = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: cultural_style
+                }
+            );
+            var universities_styles = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/universities.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.UNIVERSITIES = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: universities_styles
+                }
+            );
+            var justice_style = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/justice.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.JUSTICE = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: justice_style
+                }
+            );
+            var social_style = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/social.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.SOCIAL = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: social_style
+                }
+            );
+            var sport_styles = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/sports.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.SPORTS = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: sport_styles
+                }
+            );
+            var biblio_styles = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/biblio.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.BIBLIO = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: biblio_styles
+                }
+            );
+            var farma_styles = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: 'img/farma.png'
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 0, 0, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(255, 0, 0, 1)',
+                    width: 2
+                })
+            });
+            self.layers.FARMACIES = new ol.layer.Vector(
+                {
+                    source: new ol.source.Vector(),
+                    style: farma_styles
+                }
+            );
 
             self.map = new ol.Map({
                 target: 'map',
                 layers: [self.layers.BASE, self.layers.CIRCLES, self.layers.BARRIS,
-                    self.layers.BARRIS_HEATMAP, self.layers.BARRI_HIGHLIGHTED, self.layers.HOSPITALS
+                    self.layers.BARRIS_HEATMAP, self.layers.BARRI_HIGHLIGHTED, self.layers.HOSPITALS,
+                    self.layers.CULTURAL, self.layers.UNIVERSITIES, self.layers.JUSTICE,
+                    self.layers.SOCIAL, self.layers.SPORTS, self.layers.FARMACIES,
+                    self.layers.BIBLIO
                 ],
                 view: new ol.View({
                     center: ol.proj.fromLonLat([2.154, 41.390]),
@@ -132,10 +295,59 @@ Mapa.prototype.initialize = function () {
                 })
             });
 
-            var hospitals = '[   {"name": "Hospital del Mar", "lat": "41.383622", "lon": "2.194286"},   {"name": "Hospital Plató", "lat": "41.401004", "lon": "2.142306"},   {"name": "Hospital de l\'Esperança", "lat": "41.410615", "lon": "2.154713"}   ]';
-            self.loadPointsFromJSON(hospitals, "Hospital");
+            $.getJSON(url_backend + "/load/" + self.mapping.HOSPITAL, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Hospital");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.ESCOLES, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Universities");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.JUSTICIA, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Justice");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.FARMACIES, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Farmacies");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.CULTURA, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Cultural");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.SOCIAL, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Social");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.SPORTS, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Sports");
+            });
+
+            $.getJSON(url_backend + "/load/" + self.mapping.BIBLIO, function (hospitals) {
+                self.loadPointsFromJSON(hospitals, "Biblio");
+            });
 
             $(document).ready(function () {
+                var container = document.getElementById('popup');
+                var content = document.getElementById('popup-content');
+                var closer = document.getElementById('popup-closer');
+
+                self.overlay = new ol.Overlay({
+                    element: container,
+                    autoPan: true,
+                    autoPanAnimation: {
+                        duration: 250
+                    }
+                });
+
+                closer.onclick = function () {
+                    self.overlay.setPosition(undefined);
+                    closer.blur();
+                    return false;
+                };
+
+                self.map.addOverlay(self.overlay);
+
                 $("#drawPopulation").on('click', function (event) {
                     self.drawPopulation(event);
                 });
@@ -151,7 +363,7 @@ Mapa.prototype.initialize = function () {
                 $("#evolution").change(function () {
                     $('#evolution_output').text(this.value);
 
-                    $.getJSON(url_backend + "/load/8/" + this.value, function (data) {
+                    $.getJSON(url_backend + "/poblacio/" + this.value, function (data) {
                         for (var i = 0; i < data.features.length; ++i) {
                             self.layers.BARRIS_HEATMAP.getSource().getFeatures().find(
                                 f => f.getProperties().name === data.features[i].id).set("population", data.features[i].population);
@@ -165,7 +377,8 @@ Mapa.prototype.initialize = function () {
             });
         });
     });
-};
+}
+
 Mapa.prototype.highlightFeature = function (pixel) {
     var feature = this.map.forEachFeatureAtPixel(pixel, function (feat) {
         return feat;
@@ -182,8 +395,7 @@ Mapa.prototype.highlightFeature = function (pixel) {
     }
 };
 
-Mapa.prototype.highlightLayer = function(data)
-{
+Mapa.prototype.highlightLayer = function (data) {
     var style = new ol.style.Style({
         fill: new ol.style.Fill({
             color: 'rgba(0, 255, 0, 0.4)'
@@ -192,8 +404,7 @@ Mapa.prototype.highlightLayer = function(data)
         text: this.layers.CIRCLES.getStyle()()[0].getText()
     });
 
-    if (this.layers.BARRI_NEWELEMENT === undefined)
-    {
+    if (this.layers.BARRI_NEWELEMENT === undefined) {
         var layer = new ol.layer.Vector(
             {
                 source: new ol.source.Vector(),
@@ -223,6 +434,11 @@ Mapa.prototype.highlightLayer = function(data)
     );
 
     this.layers.BARRI_NEWELEMENT.getSource().addFeature(feat);
+
+    $('#popup-content').html('<span>District Number: ' + data.hood + '</span><br>' +
+        '<span>Score: ' + data.score + '</span><br>' +
+        '<span>Minimum Distance: ' + data.stats.distance_factor + '</span>');
+    this.overlay.setPosition(feat.getGeometry().getInteriorPoint().getCoordinates());
 };
 
 Mapa.prototype.drawPopulation = function (mouse_event) {
@@ -230,10 +446,7 @@ Mapa.prototype.drawPopulation = function (mouse_event) {
 };
 
 Mapa.prototype.drawPoint = function (point, pointType) {
-    var poly = new ol.geom.Polygon([[ol.proj.transform([parseFloat(point.lon) - 0.0002, parseFloat(point.lat) + 0.0002], 'EPSG:4326', 'EPSG:3857'),
-        ol.proj.transform([parseFloat(point.lon) - 0.0002, parseFloat(point.lat) - 0.0002], 'EPSG:4326', 'EPSG:3857'),
-        ol.proj.transform([parseFloat(point.lon) + 0.0002, parseFloat(point.lat) - 0.0002], 'EPSG:4326', 'EPSG:3857'),
-        ol.proj.transform([parseFloat(point.lon) + 0.0002, parseFloat(point.lat) + 0.0002], 'EPSG:4326', 'EPSG:3857')]]);
+    var poly = new ol.geom.Point(ol.proj.transform([parseFloat(point.lon), parseFloat(point.lat)], "EPSG:4326", "EPSG:3857"));
 
     var feat = new ol.Feature(
         {
@@ -248,9 +461,7 @@ Mapa.prototype.drawPoint = function (point, pointType) {
     this.layers[layer_name].getSource().addFeature(feat);
 };
 
-Mapa.prototype.loadPointsFromJSON = function (pointsJSON, pointType) {
-    var points = JSON.parse(pointsJSON);
-
+Mapa.prototype.loadPointsFromJSON = function (points, pointType) {
     for (var i = 0; i < points.length; ++i) {
         this.drawPoint(points[i], pointType);
     }
@@ -258,18 +469,40 @@ Mapa.prototype.loadPointsFromJSON = function (pointsJSON, pointType) {
 
 Mapa.prototype.placeNew = function (event) {
     var self = this;
-    if ($("#layer_hospital").prop("checked"))
-    {
-        $.get(url_backend + "/predict_hospital", function (data) {
+    if ($("#layer_hospital").prop("checked")) {
+        $.get(url_backend + "/predict/01", function (data) {
             self.highlightLayer(data);
         });
     }
-    else if ($("#layer_library").prop("checked"))
-    {
-        $.get(url_backend + "/predict_library", function (data) {
+    else if ($("#layer_library").prop("checked")) {
+        $.get(url_backend + "/predict/08", function (data) {
             self.highlightLayer(data);
         })
     }
+    else if ($("#layer_culture").prop("checked")) {
+        $.get(url_backend + "/predict/05", function (data) {
+            self.highlightLayer(data);
+        })
+    }
+    else if ($("#layer_sport").prop("checked")) {
+        $.get(url_backend + "/predict/07", function (data) {
+            self.highlightLayer(data);
+        })
+    }    else if ($("#layer_farma").prop("checked")) {
+        $.get(url_backend + "/predict/04", function (data) {
+            self.highlightLayer(data);
+        })
+    }    else if ($("#layer_social").prop("checked")) {
+        $.get(url_backend + "/predict/06", function (data) {
+            self.highlightLayer(data);
+        })
+    }
+    else if ($("#layer_univ").prop("checked")) {
+        $.get(url_backend + "/predict/09", function (data) {
+            self.highlightLayer(data);
+        })
+    }
+
 };
 
 function hsl_col_perc(percent, start, end) {

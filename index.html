@@ -24,6 +24,53 @@
             width: 100%;
         }
     </style>
+    <style>
+        #popup-content {
+            color: #0f0f0f;
+        }
+        .ol-popup {
+            position: absolute;
+            background-color: white;
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #cccccc;
+            bottom: 12px;
+            left: -50px;
+            min-width: 280px;
+        }
+        .ol-popup:after, .ol-popup:before {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .ol-popup:after {
+            border-top-color: white;
+            border-width: 10px;
+            left: 48px;
+            margin-left: -10px;
+        }
+        .ol-popup:before {
+            border-top-color: #cccccc;
+            border-width: 11px;
+            left: 48px;
+            margin-left: -11px;
+        }
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+        .ol-popup-closer:after {
+            content: "✖";
+        }
+    </style>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js"></script>
 </head>
 <body>
@@ -42,10 +89,6 @@
                 </label>
             </div>
             <button id="placeNew" type="button" class="btn btn-success" style="margin-right: 15px">Place New Optimized Element</button>
-            <button type="button" class="btn btn-warning" style="margin-right: 15px">Warning</button>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
         </ul>
         <span id="evolution_output">2018</span>
         <div class="slidecontainer" style="margin-left: 10px">
@@ -61,14 +104,43 @@
     z-index: 100;
     margin-top: 100px;
 ">
-    <div class="custom-control custom-checkbox">
-        <input id="layer_hospital" type="checkbox" class="custom-control-input" checked="">
-        <label class="custom-control-label" for="layer_hospital">Hospitals</label>
+        <div class="custom-control custom-radio">
+            <input id="layer_hospital" name="a" type="radio" class="custom-control-input" checked="">
+            <label class="custom-control-label" for="layer_hospital">Hospitals</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_library" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_library">Libraries</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_univ" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_univ">University</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_justice" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_justice">Justice</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_farma" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_farma">Pharmacy</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_culture" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_culture">Culture</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_social" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_social">Social</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="layer_sport" name="a" type="radio" class="custom-control-input" unchecked="">
+            <label class="custom-control-label" for="layer_sport">Sport</label>
+        </div>
     </div>
-    <div class="custom-control custom-checkbox">
-        <input id="layer_library" type="checkbox" class="custom-control-input" unchecked="">
-        <label class="custom-control-label" for="layer_library">Libraries</label>
-    </div>
+
+<div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

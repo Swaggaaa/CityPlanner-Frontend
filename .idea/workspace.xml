@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e56690b8-4e6c-449b-a530-9263ca9b5876" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/mapa.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mapa.js" afterDir="false" />
     </list>
@@ -17,14 +18,14 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+            <state relative-caret-position="230">
+              <caret line="90" column="135" selection-start-line="90" selection-start-column="135" selection-end-line="90" selection-end-column="135" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,8 +43,8 @@
       <file leaf-file-name="mapa.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/mapa.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="225" column="2" selection-start-line="225" selection-start-column="2" selection-end-line="225" selection-end-column="2" />
+            <state relative-caret-position="230">
+              <caret line="443" column="40" selection-start-line="443" selection-start-column="40" selection-end-line="443" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -60,6 +61,11 @@
               <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="barris_geo.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/barris_geo.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="false">
@@ -101,7 +107,6 @@
       <find>1</find>
       <find>this</find>
       <find>drawPop</find>
-      <find>visible</find>
       <find>drawpoint</find>
       <find>'</find>
       <find>loadpointsfromj</find>
@@ -110,14 +115,27 @@
       <find>css</find>
       <find>evolution</find>
       <find>placenew</find>
-      <find>checkbox</find>
       <find>barris_styl</find>
       <find>add</find>
+      <find>highlight</find>
+      <find>overlay</find>
+      <find>universities</find>
+      <find>/load/</find>
+      <find>loadpointsº</find>
+      <find>checkbox</find>
+      <find>+ &quot;/2018&quot;</find>
+      <find>placeNew</find>
+      <find>warning</find>
+      <find>.id</find>
+      <find>loadpoints</find>
+      <find>predict_</find>
+      <find>visible</find>
     </findStrings>
     <replaceStrings>
       <replace>2</replace>
       <replace>self</replace>
       <replace>&quot;</replace>
+      <replace>radio</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -211,12 +229,12 @@
       <option name="presentableId" value="Default" />
       <updated>1539988988094</updated>
       <workItem from="1539988991281" duration="23318000" />
-      <workItem from="1540018169040" duration="53586000" />
+      <workItem from="1540018169040" duration="68600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76904000" />
+    <option name="totallyTimeSpent" value="91918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -229,7 +247,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16822916" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16822916" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -264,8 +282,8 @@
             <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -322,13 +340,6 @@
     <entry file="file://$PROJECT_DIR$/js/js-colormaps.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hoods.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/ensaimada.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="889">
@@ -339,24 +350,34 @@
     <entry file="file://$PROJECT_DIR$/js/npm.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/hoods.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/barris_geo.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+        <state relative-caret-position="230">
+          <caret line="90" column="135" selection-start-line="90" selection-start-column="135" selection-end-line="90" selection-end-column="135" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mapa.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="225" column="2" selection-start-line="225" selection-start-column="2" selection-end-line="225" selection-end-column="2" />
+        <state relative-caret-position="230">
+          <caret line="443" column="40" selection-start-line="443" selection-start-column="40" selection-end-line="443" selection-end-column="40" />
         </state>
       </provider>
     </entry>
